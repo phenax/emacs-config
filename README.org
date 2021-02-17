@@ -2,7 +2,7 @@
 My emacs config as an org file.
 
 ** Install
-Run ~./install.sh~ to generate the emacs config (~~/.emacs.d/init.el~) on a new system.
+Run ~./install.sh~ to generate the emacs config (=~/.emacs.d/init.el=) on a new system.
 
 Changes in the ~Emacs.org~ file will re-generate the emacs config file. To load the updated config use the key binding ~C-SPC C-r~.
 
