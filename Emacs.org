@@ -90,7 +90,13 @@
   (use-package alert
     :commands alert
     :custom
-      (alert-default-style 'notifications))
+    (alert-default-style 'notifications))
+
+  (defun kill-other-buffers ()
+    (interactive)
+    (mapc 'kill-buffer 
+      (delq (current-buffer) 
+        (remove-if-not 'buffer-file-name (buffer-list)))))
 
 #+end_src
 
@@ -573,6 +579,17 @@
 ** Custom stuff
 
 #+begin_src emacs-lisp
+
+  (use-package org-journal
+    :ensure t
+    :defer t
+    :custom
+    (org-journal-dir (phenax/org-path "./diary/"))
+    :init
+    (phenax/nmap-leader
+      "j"  '(:ignore t :which-key "journal")
+      "ja" '(org-journal-new-entry :which-key "new")
+      "jj" '(org-journal-open-current-journal-file :which-key  "view")))
 
   (defun phenax/open-tasks ()
     (let (
